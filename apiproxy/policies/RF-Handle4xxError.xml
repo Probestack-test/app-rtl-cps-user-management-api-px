@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RaiseFault – Handle 4xx Backend Errors
+  Intercepts 4xx status codes from the target and returns a
+  well-formed JSON error response to the caller.
+  Attached in DefaultFaultRule with condition:
+    (target.received.status.code >= 400) and
+    (target.received.status.code <= 499)
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true"
+            name="RF-Handle4xxError">
+  <DisplayName>RF-Handle4xxError</DisplayName>
+  <FaultResponse>
+    <Copy source="response">
+      <StatusCode/>
+      <ReasonPhrase/>
+    </Copy>
+    <Set>
+      <Headers>
+        <Header name="Content-Type">application/json</Header>
+        <Header name="X-Request-Id">{messageid}</Header>
+        <Header name="X-Response-Time">{system.timestamp}</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+  "error": {
+    "code": {target.received.status.code},
+    "type": "client.Error",
+    "message": "{target.received.reason.phrase}",
+    "requestId": "{messageid}",
+    "timestamp": "{system.timestamp}"
+  }
+}</Payload>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>
