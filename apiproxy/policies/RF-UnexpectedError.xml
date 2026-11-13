@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RaiseFault – Unexpected / Proxy Fault
+  Catch-all for faults that originate INSIDE Apigee (e.g. policy errors,
+  target connection failures). Returns a generic 500.
+  This policy is attached to DefaultFaultRule.
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true"
+            name="RF-UnexpectedError">
+  <DisplayName>RF-UnexpectedError</DisplayName>
+  <FaultResponse>
+    <Set>
+      <StatusCode>500</StatusCode>
+      <ReasonPhrase>Internal Server Error</ReasonPhrase>
+      <Headers>
+        <Header name="Content-Type">application/json</Header>
+        <Header name="X-Error-Source">proxy</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+  "error": {
+    "code": 500,
+    "type": "proxy.UnexpectedError",
+    "message": "An unexpected error occurred in the API layer.",
+    "faultString": "{fault.name}",
+    "requestId": "{messageid}"
+  }
+}</Payload>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ExtractVariables – Extract Path & Query Parameters
+  Pulls path parameters and query strings into named flow variables
+  so downstream policies can reference them by name rather than
+  parsing the raw path string.
+
+  Usage in other policies:
+    {extractvariables.EV-ExtractPathParams.pathParam}
+-->
+<ExtractVariables async="false" continueOnError="true" enabled="true"
+                  name="EV-ExtractPathParams">
+  <DisplayName>EV-ExtractPathParams</DisplayName>
+  <Source clearPayload="false">request</Source>
+  <URIPath>
+    <Pattern ignoreCase="true">/users/{pathParam}</Pattern>
+    <Pattern ignoreCase="true">/orders/{pathParam}</Pattern>
+  </URIPath>
+  <QueryParam name="page">
+    <Pattern ignoreCase="true">{pageNumber}</Pattern>
+  </QueryParam>
+  <QueryParam name="size">
+    <Pattern ignoreCase="true">{pageSize}</Pattern>
+  </QueryParam>
+  <Header name="content-type">
+    <Pattern ignoreCase="true">{requestContentType}</Pattern>
+  </Header>
+</ExtractVariables>
