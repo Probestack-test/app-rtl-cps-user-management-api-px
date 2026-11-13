@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AssignMessage – Set Error Response Headers
+  Adds standard headers on ALL error responses:
+    - Content-Type: application/json
+    - X-Request-Id: correlation id for support
+    - X-Content-Type-Options: security hardening
+    - X-Frame-Options: security hardening
+  Runs as the FIRST step in DefaultFaultRule.
+-->
+<AssignMessage async="false" continueOnError="false" enabled="true"
+               name="AM-SetErrorHeaders">
+  <DisplayName>AM-SetErrorHeaders</DisplayName>
+  <AssignTo createNew="false">response</AssignTo>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/json</Header>
+      <Header name="X-Request-Id">{messageid}</Header>
+      <Header name="X-Content-Type-Options">nosniff</Header>
+      <Header name="X-Frame-Options">DENY</Header>
+      <Header name="Cache-Control">no-store, no-cache</Header>
+    </Headers>
+  </Set>
+  <Remove>
+    <Headers>
+      <!-- Remove any internal error detail headers before returning -->
+      <Header name="X-Powered-By"/>
+      <Header name="Server"/>
+    </Headers>
+  </Remove>
+</AssignMessage>

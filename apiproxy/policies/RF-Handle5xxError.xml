@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  RaiseFault – Handle 5xx Backend Errors
+  Intercepts 5xx status codes from the target and returns a
+  sanitised JSON error (does NOT leak internal error details).
+  Contact: api-support@example.com
+-->
+<RaiseFault async="false" continueOnError="false" enabled="true"
+            name="RF-Handle5xxError">
+  <DisplayName>RF-Handle5xxError</DisplayName>
+  <FaultResponse>
+    <Set>
+      <StatusCode>500</StatusCode>
+      <ReasonPhrase>Internal Server Error</ReasonPhrase>
+      <Headers>
+        <Header name="Content-Type">application/json</Header>
+        <Header name="X-Request-Id">{messageid}</Header>
+        <Header name="X-Response-Time">{system.timestamp}</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+  "error": {
+    "code": 500,
+    "type": "server.InternalError",
+    "message": "An unexpected error occurred. Please try again later.",
+    "contact": "api-support@example.com",
+    "requestId": "{messageid}",
+    "timestamp": "{system.timestamp}"
+  }
+}</Payload>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

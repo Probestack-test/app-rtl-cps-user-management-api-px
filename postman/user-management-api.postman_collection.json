@@ -1,0 +1,1230 @@
+{
+  "info" : {
+    "name" : "user-management-api Postman Collection",
+    "description" : "A clean, standards-compliant User Management API. Demonstrates correct \nOpenAPI 3.0.3 patterns — no duplicate paths, all operations documented, \nvalid schemas, and proper error handling.\n\n\nOpenAPI version: 2.0.0",
+    "schema" : "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth" : {
+    "type" : "bearer",
+    "bearer" : [ {
+      "key" : "token",
+      "value" : "{{accessToken}}",
+      "type" : "string"
+    } ]
+  },
+  "variable" : [ {
+    "key" : "baseUrl",
+    "value" : "https://api.forgesphere.example.com/v33",
+    "type" : "string",
+    "description" : "Override with the base URL of the deployed Apigee proxy."
+  }, {
+    "key" : "accessToken",
+    "value" : "",
+    "type" : "string"
+  }, {
+    "key" : "status",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter users by account status."
+  }, {
+    "key" : "role",
+    "value" : "",
+    "type" : "string",
+    "description" : "Filter users by role."
+  }, {
+    "key" : "q",
+    "value" : "",
+    "type" : "string",
+    "description" : "Full-text search across name and email."
+  }, {
+    "key" : "page",
+    "value" : "",
+    "type" : "string",
+    "description" : "Page number (zero-based)."
+  }, {
+    "key" : "size",
+    "value" : "",
+    "type" : "string",
+    "description" : "Number of items per page."
+  }, {
+    "key" : "userId",
+    "value" : "",
+    "type" : "string",
+    "description" : "Unique identifier of the user."
+  }, {
+    "key" : "email",
+    "value" : "",
+    "type" : "string",
+    "description" : "Exact email match."
+  }, {
+    "key" : "createdAfter",
+    "value" : "",
+    "type" : "string",
+    "description" : "Only include users created after this timestamp."
+  }, {
+    "key" : "orderId",
+    "value" : "",
+    "type" : "string",
+    "description" : "Unique identifier of the order."
+  } ],
+  "item" : [ {
+    "name" : "List all users",
+    "request" : {
+      "method" : "GET",
+      "description" : "List all users\n\nResponses:\n- 200: Paginated list of users.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/users?status={{status}}&role={{role}}&q={{q}}&page={{page}}&size={{size}}",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "users" ],
+        "query" : [ {
+          "key" : "status",
+          "value" : "ACTIVE",
+          "disabled" : true,
+          "description" : "Filter users by account status."
+        }, {
+          "key" : "role",
+          "value" : "ADMIN",
+          "disabled" : true,
+          "description" : "Filter users by role."
+        }, {
+          "key" : "q",
+          "value" : "sample",
+          "disabled" : true,
+          "description" : "Full-text search across name and email."
+        }, {
+          "key" : "page",
+          "value" : "1",
+          "disabled" : true,
+          "description" : "Page number (zero-based)."
+        }, {
+          "key" : "size",
+          "value" : "1",
+          "disabled" : true,
+          "description" : "Number of items per page."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 Paginated list of users.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "List all users\n\nResponses:\n- 200: Paginated list of users.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users?status={{status}}&role={{role}}&q={{q}}&page={{page}}&size={{size}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ],
+          "query" : [ {
+            "key" : "status",
+            "value" : "ACTIVE",
+            "disabled" : true,
+            "description" : "Filter users by account status."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter users by role."
+          }, {
+            "key" : "q",
+            "value" : "sample",
+            "disabled" : true,
+            "description" : "Full-text search across name and email."
+          }, {
+            "key" : "page",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Page number (zero-based)."
+          }, {
+            "key" : "size",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Number of items per page."
+          } ]
+        }
+      },
+      "status" : "Paginated list of users.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "400 Invalid request payload or parameters.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "List all users\n\nResponses:\n- 200: Paginated list of users.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users?status={{status}}&role={{role}}&q={{q}}&page={{page}}&size={{size}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ],
+          "query" : [ {
+            "key" : "status",
+            "value" : "ACTIVE",
+            "disabled" : true,
+            "description" : "Filter users by account status."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter users by role."
+          }, {
+            "key" : "q",
+            "value" : "sample",
+            "disabled" : true,
+            "description" : "Full-text search across name and email."
+          }, {
+            "key" : "page",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Page number (zero-based)."
+          }, {
+            "key" : "size",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Number of items per page."
+          } ]
+        }
+      },
+      "status" : "Invalid request payload or parameters.",
+      "code" : 400,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "List all users\n\nResponses:\n- 200: Paginated list of users.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users?status={{status}}&role={{role}}&q={{q}}&page={{page}}&size={{size}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ],
+          "query" : [ {
+            "key" : "status",
+            "value" : "ACTIVE",
+            "disabled" : true,
+            "description" : "Filter users by account status."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter users by role."
+          }, {
+            "key" : "q",
+            "value" : "sample",
+            "disabled" : true,
+            "description" : "Full-text search across name and email."
+          }, {
+            "key" : "page",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Page number (zero-based)."
+          }, {
+            "key" : "size",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Number of items per page."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "List all users\n\nResponses:\n- 200: Paginated list of users.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users?status={{status}}&role={{role}}&q={{q}}&page={{page}}&size={{size}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ],
+          "query" : [ {
+            "key" : "status",
+            "value" : "ACTIVE",
+            "disabled" : true,
+            "description" : "Filter users by account status."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter users by role."
+          }, {
+            "key" : "q",
+            "value" : "sample",
+            "disabled" : true,
+            "description" : "Full-text search across name and email."
+          }, {
+            "key" : "page",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Page number (zero-based)."
+          }, {
+            "key" : "size",
+            "value" : "1",
+            "disabled" : true,
+            "description" : "Number of items per page."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Create a new user",
+    "request" : {
+      "method" : "POST",
+      "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/users",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "users" ]
+      }
+    },
+    "response" : [ {
+      "name" : "201 User created successfully.",
+      "originalRequest" : {
+        "method" : "POST",
+        "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ]
+        }
+      },
+      "status" : "User created successfully.",
+      "code" : 201,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "400 Invalid request payload or parameters.",
+      "originalRequest" : {
+        "method" : "POST",
+        "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ]
+        }
+      },
+      "status" : "Invalid request payload or parameters.",
+      "code" : 400,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "POST",
+        "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "409 Email already exists.",
+      "originalRequest" : {
+        "method" : "POST",
+        "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ]
+        }
+      },
+      "status" : "Email already exists.",
+      "code" : 409,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "POST",
+        "description" : "Create a new user\n\nResponses:\n- 201: User created successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 409: Email already exists.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"email\":\"amit.kumar@example.com\",\"name\":\"Amit Kumar\",\"password\":\"SecurePass123!\",\"role\":\"DEVELOPER\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users" ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Get user by ID",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get user by ID\n\nResponses:\n- 200: User profile retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/users/:userId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "users", ":userId" ],
+        "variable" : [ {
+          "key" : "userId",
+          "value" : "00000000-0000-0000-0000-000000000001",
+          "description" : "Unique identifier of the user."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 User profile retrieved successfully.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get user by ID\n\nResponses:\n- 200: User profile retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "User profile retrieved successfully.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get user by ID\n\nResponses:\n- 200: User profile retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "404 Requested resource not found.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get user by ID\n\nResponses:\n- 200: User profile retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Requested resource not found.",
+      "code" : 404,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get user by ID\n\nResponses:\n- 200: User profile retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Update user profile",
+    "request" : {
+      "method" : "PUT",
+      "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+      "header" : [ {
+        "key" : "Content-Type",
+        "value" : "application/json",
+        "type" : "text"
+      } ],
+      "body" : {
+        "mode" : "raw",
+        "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+        "options" : {
+          "raw" : {
+            "language" : "json"
+          }
+        }
+      },
+      "url" : {
+        "raw" : "{{baseUrl}}/users/:userId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "users", ":userId" ],
+        "variable" : [ {
+          "key" : "userId",
+          "value" : "00000000-0000-0000-0000-000000000001",
+          "description" : "Unique identifier of the user."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 User updated successfully.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "User updated successfully.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "400 Invalid request payload or parameters.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Invalid request payload or parameters.",
+      "code" : 400,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "404 Requested resource not found.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Requested resource not found.",
+      "code" : 404,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "409 Email conflict with another user.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Email conflict with another user.",
+      "code" : 409,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "PUT",
+        "description" : "Update user profile\n\nResponses:\n- 200: User updated successfully.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 409: Email conflict with another user.\n- 500: Unexpected server error.",
+        "header" : [ {
+          "key" : "Content-Type",
+          "value" : "application/json",
+          "type" : "text"
+        } ],
+        "body" : {
+          "mode" : "raw",
+          "raw" : "{\"name\":\"Amit Kumar Singh\",\"email\":\"amit.singh@example.com\",\"role\":\"ADMIN\",\"status\":\"ACTIVE\"}",
+          "options" : {
+            "raw" : {
+              "language" : "json"
+            }
+          }
+        },
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Delete user",
+    "request" : {
+      "method" : "DELETE",
+      "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/users/:userId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "users", ":userId" ],
+        "variable" : [ {
+          "key" : "userId",
+          "value" : "00000000-0000-0000-0000-000000000001",
+          "description" : "Unique identifier of the user."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "204 User deleted successfully (no content).",
+      "originalRequest" : {
+        "method" : "DELETE",
+        "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "User deleted successfully (no content).",
+      "code" : 204,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "DELETE",
+        "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "403 Insufficient permissions to delete this user.",
+      "originalRequest" : {
+        "method" : "DELETE",
+        "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Insufficient permissions to delete this user.",
+      "code" : 403,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "404 Requested resource not found.",
+      "originalRequest" : {
+        "method" : "DELETE",
+        "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Requested resource not found.",
+      "code" : 404,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "DELETE",
+        "description" : "Delete user\n\nResponses:\n- 204: User deleted successfully (no content).\n- 401: Missing or invalid authentication token.\n- 403: Insufficient permissions to delete this user.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/users/:userId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "users", ":userId" ],
+          "variable" : [ {
+            "key" : "userId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the user."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Search user details",
+    "request" : {
+      "method" : "GET",
+      "description" : "Search user details\n\nResponses:\n- 200: Matching user details.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/user-details?email={{email}}&role={{role}}&createdAfter={{createdAfter}}",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "user-details" ],
+        "query" : [ {
+          "key" : "email",
+          "value" : "user@example.com",
+          "disabled" : true,
+          "description" : "Exact email match."
+        }, {
+          "key" : "role",
+          "value" : "ADMIN",
+          "disabled" : true,
+          "description" : "Filter by role."
+        }, {
+          "key" : "createdAfter",
+          "value" : "2026-01-01T00:00:00Z",
+          "disabled" : true,
+          "description" : "Only include users created after this timestamp."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 Matching user details.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Search user details\n\nResponses:\n- 200: Matching user details.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/user-details?email={{email}}&role={{role}}&createdAfter={{createdAfter}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "user-details" ],
+          "query" : [ {
+            "key" : "email",
+            "value" : "user@example.com",
+            "disabled" : true,
+            "description" : "Exact email match."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter by role."
+          }, {
+            "key" : "createdAfter",
+            "value" : "2026-01-01T00:00:00Z",
+            "disabled" : true,
+            "description" : "Only include users created after this timestamp."
+          } ]
+        }
+      },
+      "status" : "Matching user details.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "400 Invalid request payload or parameters.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Search user details\n\nResponses:\n- 200: Matching user details.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/user-details?email={{email}}&role={{role}}&createdAfter={{createdAfter}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "user-details" ],
+          "query" : [ {
+            "key" : "email",
+            "value" : "user@example.com",
+            "disabled" : true,
+            "description" : "Exact email match."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter by role."
+          }, {
+            "key" : "createdAfter",
+            "value" : "2026-01-01T00:00:00Z",
+            "disabled" : true,
+            "description" : "Only include users created after this timestamp."
+          } ]
+        }
+      },
+      "status" : "Invalid request payload or parameters.",
+      "code" : 400,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Search user details\n\nResponses:\n- 200: Matching user details.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/user-details?email={{email}}&role={{role}}&createdAfter={{createdAfter}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "user-details" ],
+          "query" : [ {
+            "key" : "email",
+            "value" : "user@example.com",
+            "disabled" : true,
+            "description" : "Exact email match."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter by role."
+          }, {
+            "key" : "createdAfter",
+            "value" : "2026-01-01T00:00:00Z",
+            "disabled" : true,
+            "description" : "Only include users created after this timestamp."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Search user details\n\nResponses:\n- 200: Matching user details.\n- 400: Invalid request payload or parameters.\n- 401: Missing or invalid authentication token.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/user-details?email={{email}}&role={{role}}&createdAfter={{createdAfter}}",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "user-details" ],
+          "query" : [ {
+            "key" : "email",
+            "value" : "user@example.com",
+            "disabled" : true,
+            "description" : "Exact email match."
+          }, {
+            "key" : "role",
+            "value" : "ADMIN",
+            "disabled" : true,
+            "description" : "Filter by role."
+          }, {
+            "key" : "createdAfter",
+            "value" : "2026-01-01T00:00:00Z",
+            "disabled" : true,
+            "description" : "Only include users created after this timestamp."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Get order by ID",
+    "request" : {
+      "method" : "GET",
+      "description" : "Get order by ID\n\nResponses:\n- 200: Order details retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/orders/:orderId",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "orders", ":orderId" ],
+        "variable" : [ {
+          "key" : "orderId",
+          "value" : "00000000-0000-0000-0000-000000000001",
+          "description" : "Unique identifier of the order."
+        } ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 Order details retrieved successfully.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get order by ID\n\nResponses:\n- 200: Order details retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/orders/:orderId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "orders", ":orderId" ],
+          "variable" : [ {
+            "key" : "orderId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the order."
+          } ]
+        }
+      },
+      "status" : "Order details retrieved successfully.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "401 Missing or invalid authentication token.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get order by ID\n\nResponses:\n- 200: Order details retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/orders/:orderId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "orders", ":orderId" ],
+          "variable" : [ {
+            "key" : "orderId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the order."
+          } ]
+        }
+      },
+      "status" : "Missing or invalid authentication token.",
+      "code" : 401,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "404 Requested resource not found.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get order by ID\n\nResponses:\n- 200: Order details retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/orders/:orderId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "orders", ":orderId" ],
+          "variable" : [ {
+            "key" : "orderId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the order."
+          } ]
+        }
+      },
+      "status" : "Requested resource not found.",
+      "code" : 404,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    }, {
+      "name" : "500 Unexpected server error.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Get order by ID\n\nResponses:\n- 200: Order details retrieved successfully.\n- 401: Missing or invalid authentication token.\n- 404: Requested resource not found.\n- 500: Unexpected server error.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/orders/:orderId",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "orders", ":orderId" ],
+          "variable" : [ {
+            "key" : "orderId",
+            "value" : "00000000-0000-0000-0000-000000000001",
+            "description" : "Unique identifier of the order."
+          } ]
+        }
+      },
+      "status" : "Unexpected server error.",
+      "code" : 500,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  }, {
+    "name" : "Service health check",
+    "request" : {
+      "method" : "GET",
+      "description" : "Service health check\n\nResponses:\n- 200: Service is healthy.",
+      "header" : [ ],
+      "url" : {
+        "raw" : "{{baseUrl}}/health",
+        "host" : [ "{{baseUrl}}" ],
+        "path" : [ "health" ]
+      }
+    },
+    "response" : [ {
+      "name" : "200 Service is healthy.",
+      "originalRequest" : {
+        "method" : "GET",
+        "description" : "Service health check\n\nResponses:\n- 200: Service is healthy.",
+        "header" : [ ],
+        "url" : {
+          "raw" : "{{baseUrl}}/health",
+          "host" : [ "{{baseUrl}}" ],
+          "path" : [ "health" ]
+        }
+      },
+      "status" : "Service is healthy.",
+      "code" : 200,
+      "_postman_previewlanguage" : "json",
+      "header" : [ ],
+      "body" : ""
+    } ]
+  } ]
+}
